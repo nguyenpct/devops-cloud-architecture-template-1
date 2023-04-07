@@ -14,12 +14,12 @@ export class UsersService {
   }
 
   findAll() {
-    // return this.prisma.user.findMany({
-    //   include: {
-    //     posts: true,
-    //   },
-    // });
-    throw new NotFoundException('users not found');
+    return this.prisma.user.findMany({
+      include: {
+        posts: true,
+      },
+    });
+    // throw new NotFoundException('users not found');
   }
 
   findOne(id: number) {

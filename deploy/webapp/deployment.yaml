@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: nest-prisma:v1
+        image: nest-prisma:v6
         imagePullPolicy: Never
         resources:
           limits:
             memory: "256Mi"
-            cpu: "1000m"
+            cpu: "175m"
         ports:
         - containerPort: 3000
         env:

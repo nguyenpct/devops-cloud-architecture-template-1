@@ -6,7 +6,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.setGlobalPrefix('app');
   const config = new DocumentBuilder()
     .setTitle('Nest prisma')
     .setDescription('The Nest prisma API description')

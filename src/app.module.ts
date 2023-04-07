@@ -15,6 +15,7 @@ import { PostsModule } from './posts/posts.module';
       playground: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      path: '/app/graphql',
     }),
     ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
