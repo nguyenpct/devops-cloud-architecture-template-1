@@ -36,3 +36,7 @@ lerna-debug.log*
 
 .env
 .env.*
+
+/db
+/elasticsearch_data
+/kibana_data

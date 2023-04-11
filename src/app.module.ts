@@ -1,3 +1,4 @@
+import { SearchModule } from './search/search.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -10,6 +11,7 @@ import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
+    SearchModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,

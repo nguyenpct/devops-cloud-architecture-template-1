@@ -36,7 +36,7 @@ type Query {
   post(id: Int!): Post!
   posts: [Post!]!
   user(id: Int!): User!
-  users: [User!]!
+  users(search: String): [User!]!
 }
 
 input UpdatePostInput {
