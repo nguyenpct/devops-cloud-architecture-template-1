@@ -11,31 +11,31 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
       { emit: 'stdout', level: 'warn' },
       { emit: 'stdout', level: 'error' },
     ];
-    const dbUser = configService.get('DATABASE_USER');
-    const dbPass = configService.get('DATABASE_PASSWORD');
-    const dbHost = configService.get('DATABASE_HOST');
-    const dbPort = configService.get('DATABASE_PORT');
-    const dbName = configService.get('DATABASE_NAME');
-    const dbSchema = configService.get('DATABASE_SCHEMA');
-    const databaseUrl = `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?schema=${dbSchema}`;
+    // const dbUser = configService.get('DATABASE_USER');
+    // const dbPass = configService.get('DATABASE_PASSWORD');
+    // const dbHost = configService.get('DATABASE_HOST');
+    // const dbPort = configService.get('DATABASE_PORT');
+    // const dbName = configService.get('DATABASE_NAME');
+    // const dbSchema = configService.get('DATABASE_SCHEMA');
+    // const databaseUrl = `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?schema=${dbSchema}`;
     console.log({
-      dbUser,
-      dbPass,
-      dbHost,
-      dbPort,
-      dbName,
-      dbSchema,
-      databaseUrl,
+      // dbUser,
+      // dbPass,
+      // dbHost,
+      // dbPort,
+      // dbName,
+      // dbSchema,
+      // databaseUrl,
       databaseUrlInENV: configService.get('DATABASE_URL'),
     });
     super({
       log: loggingSettings,
       errorFormat: 'pretty',
-      datasources: {
-        db: {
-          url: databaseUrl,
-        },
-      },
+      // datasources: {
+      //   db: {
+      //     url: databaseUrl,
+      //   },
+      // },
     });
   }
 

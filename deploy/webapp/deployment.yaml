@@ -5,7 +5,7 @@ metadata:
   labels:
     app: webapp
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: webapp 
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: nest-prisma:v6
+        image: nest-prisma:v8
         imagePullPolicy: Never
         resources:
           limits:
@@ -53,3 +53,10 @@ spec:
             value: public
           - name: DATABASE_URL
             value: "postgresql://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)?schema=$(DATABASE_SCHEMA)"
+          - name: ELASTICSEARCH_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: elasticsearch-config
+                key: elasticsearch-host
+          - name: ELASTICSEARCH_NODE
+            value: "http://$(ELASTICSEARCH_HOST):9200"
