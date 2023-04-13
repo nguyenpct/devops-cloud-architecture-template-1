@@ -1,0 +1,25 @@
+apiVersion: skaffold/v4beta4
+kind: Config
+metadata:
+  name: nest-prisma
+build:
+  artifacts:
+    - image: nest-prisma
+      context: "../"
+      docker:
+        dockerfile: "../Dockerfile"
+manifests:
+  kustomize:
+    paths:
+      - ./overlays/dev
+profiles:
+  - name: dev
+    manifests:
+      kustomize:
+        paths:
+          - ./overlays/dev
+  - name: prod
+    manifests:
+      kustomize:
+        paths:
+          - ./overlays/prod
