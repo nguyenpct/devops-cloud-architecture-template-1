@@ -1,15 +1,34 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DatabaseModule } from '../database/database.module';
 import { PostsService } from './posts.service';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
+import { mock } from 'jest-mock-extended';
+import { PrismaService } from '../database/prisma.service';
+import { ElasticsearchService } from '@nestjs/elasticsearch';
 
 describe('PostsService', () => {
   let service: PostsService;
+  const configService = mock<ConfigService>();
+  const prismaService = mock<PrismaService>();
+  const elasticsearchService = mock<ElasticsearchService>();
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [DatabaseModule, ConfigModule],
-      providers: [PostsService],
+      imports: [],
+      providers: [
+        PostsService,
+        {
+          provide: ConfigService,
+          useValue: configService,
+        },
+        {
+          provide: PrismaService,
+          useValue: prismaService,
+        },
+        {
+          provide: ElasticsearchService,
+          useValue: elasticsearchService,
+        },
+      ],
     }).compile();
 
     service = module.get<PostsService>(PostsService);
