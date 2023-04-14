@@ -81,7 +81,7 @@ jobs:
           use_auth_provider: true
       - name: Install Skaffold
         run: |
-          curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v2.0.1/skaffold-linux-amd64
+          curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/v2.3.1/skaffold-linux-amd64
           chmod +x skaffold
           sudo mv skaffold /usr/local/bin
       - name: Deploy skaffold
