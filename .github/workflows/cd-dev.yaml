@@ -17,11 +17,11 @@ jobs:
     env:
       PROJECT_ID: dev-pct
       GKE_CLUSTER: my-first-cluster-1
-      GKE_REGION: asia-northeast1
+      GKE_REGION: asia-northeast1-a
       IMAGE: nest-prisma
       IMAGE_TAG: gcr.io/dev-pct/nest-prisma:${GITHUB_SHA}
       # PERMIT_IP_ALWAYS: ${{ secrets.DEV_PERMIT_IP_ALWAYS }}
-      WORKLOAD_IDENTITY_PROVIDER: projects/841616085434/locations/global/workloadIdentityPools/thien-test-gke/providers/thien-test-gke-provider
+      WORKLOAD_IDENTITY_PROVIDER: projects/841616085434/locations/global/workloadIdentityPools/thien-test-gke/providers/thien-test-gke-provider-2
       SERVICE_ACCOUNT: thien-test-gke@dev-pct.iam.gserviceaccount.com
     permissions:
       contents: "read"
@@ -99,12 +99,12 @@ jobs:
         run: |-
           gcloud container clusters update ${{ env.GKE_CLUSTER }} --region ${{ env.GKE_REGION }} \
                   --enable-master-authorized-networks --master-authorized-networks=${{ env.PERMIT_IP_ALWAYS }}
-      - name: Clean old images
-        uses: pcae/gcp-clean-old-versions-action@v1.3.1
-        with:
-          resource_type: "container"
-          project_id: ${{ env.PROJECT_ID }}
-          service_name: ${{ env.IMAGE }}
-          keep_count: 3
-          include_tags: true
+      # - name: Clean old images
+      #   uses: pcae/gcp-clean-old-versions-action@v1.3.1
+      #   with:
+      #     resource_type: "container"
+      #     project_id: ${{ env.PROJECT_ID }}
+      #     service_name: ${{ env.IMAGE }}
+      #     keep_count: 3
+      #     include_tags: true
     
