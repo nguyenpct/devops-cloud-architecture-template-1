@@ -6,3 +6,6 @@ resources:
 
 commonLabels:
   env: dev
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
