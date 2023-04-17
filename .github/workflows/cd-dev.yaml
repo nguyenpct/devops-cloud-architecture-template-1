@@ -17,7 +17,7 @@ jobs:
     env:
       PROJECT_ID: dev-pct
       GKE_CLUSTER: my-first-cluster-1
-      GKE_REGION: asia-northeast1-a
+      GKE_REGION: us-central1-c
       IMAGE: nest-prisma
       IMAGE_TAG: gcr.io/dev-pct/nest-prisma:${GITHUB_SHA}
       # PERMIT_IP_ALWAYS: ${{ secrets.DEV_PERMIT_IP_ALWAYS }}
@@ -89,9 +89,11 @@ jobs:
           gcloud container clusters get-credentials ${{ env.GKE_CLUSTER }} \
             --zone ${{ env.GKE_REGION }} \
             --project ${{ env.PROJECT_ID }}
-          skaffold render -f deploy/skaffold.yaml --images="${{ env.IMAGE_NAME }}=${{ env.IMAGE_TAG }}" --profile dev -o deployment.yaml
+          cd deploy
+          skaffold render --images="${{ env.IMAGE_NAME }}=${{ env.IMAGE_TAG }}" --profile dev -o deployment.yaml
           cat deployment.yaml
-          skaffold apply -f deploy/skaffold.yaml deployment.yaml
+          skaffold apply deployment.yaml
+          cd ..å
         env:
           USE_GKE_GCLOUD_AUTH_PLUGIN: True
           IMAGE_NAME: gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}
