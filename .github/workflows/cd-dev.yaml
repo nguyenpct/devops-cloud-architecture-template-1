@@ -93,7 +93,7 @@ jobs:
           skaffold render --images="${{ env.IMAGE_NAME }}=${{ env.IMAGE_TAG }}" --profile dev -o deployment.yaml
           cat deployment.yaml
           skaffold apply deployment.yaml
-          cd ..å
+          cd ..
         env:
           USE_GKE_GCLOUD_AUTH_PLUGIN: True
           IMAGE_NAME: gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}
