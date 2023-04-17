@@ -7,5 +7,5 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: gcr.io/pct/nest-prisma
+        image: gcr.io/dev-pct/nest-prisma
         imagePullPolicy: Always
