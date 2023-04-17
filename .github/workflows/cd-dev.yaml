@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PROJECT_ID: dev-pct
-      GKE_CLUSTER: my-first-cluster-1
+      GKE_CLUSTER: my-first-cluster-2
       GKE_REGION: us-central1-c
       IMAGE: nest-prisma
       IMAGE_TAG: gcr.io/dev-pct/nest-prisma:${GITHUB_SHA}
