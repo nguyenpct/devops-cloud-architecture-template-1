@@ -2,13 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PostsResolver } from './posts.resolver';
 import { PostsService } from './posts.service';
 import { PrismaService } from '../database/prisma.service';
-import { ElasticsearchService } from '@nestjs/elasticsearch';
 import { mock } from 'jest-mock-extended';
 
 describe('PostsResolver', () => {
   let resolver: PostsResolver;
   const prismaService = mock<PrismaService>();
-  const elasticsearchService = mock<ElasticsearchService>();
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -19,10 +17,6 @@ describe('PostsResolver', () => {
         {
           provide: PrismaService,
           useValue: prismaService,
-        },
-        {
-          provide: ElasticsearchService,
-          useValue: elasticsearchService,
         },
       ],
     }).compile();

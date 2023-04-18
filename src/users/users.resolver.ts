@@ -15,13 +15,7 @@ export class UsersResolver {
   }
 
   @Query(() => [User], { name: 'users' })
-  findAll(
-    @Args('search', { type: () => String, nullable: true }) search?: string,
-  ) {
-    console.log('Resolver User findAll');
-    if (search) {
-      return this.usersService.searchForUsers(search);
-    }
+  findAll() {
     return this.usersService.findAll();
   }
 
