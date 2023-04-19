@@ -19,18 +19,23 @@ spec:
         image: mysql:latest
         resources:
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: "256Mi"
+            cpu: "1000m"
         ports:
         - containerPort: 3306
         env:
-        - name: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: mysql_root_password
-        - name: MYSQL_DATABASE
+              key: mysql-user
+        - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: mysql_db
+              key: mysql-password
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-db

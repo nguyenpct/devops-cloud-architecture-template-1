@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Never
         resources:
           limits:
-            memory: "512Mi"
+            memory: "256Mi"
             cpu: "250m"
         ports:
         - containerPort: 4000
@@ -37,11 +37,6 @@ spec:
               configMapKeyRef:
                 name: mysql-config
                 key: mysql_host
-          - name: DATABASE_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: mysql-config
-                key: mysql_port
           - name: DATABASE_USER
             valueFrom:
               secretKeyRef:
@@ -51,7 +46,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: mysql-secret
-                key: mysql_root_password
+                key: mysql_password
           - name: DATABASE_NAME
             valueFrom:
               secretKeyRef:

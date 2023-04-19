@@ -8,6 +8,5 @@ spec:
     port: 4000
     targetPort: 4000
     protocol: TCP
-  type: LoadBalancer
   selector:
     app: webapp
