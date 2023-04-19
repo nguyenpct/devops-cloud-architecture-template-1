@@ -1,8 +1,10 @@
 steps:
+
 - name: 'gcr.io/cloud-builders/npm'
   id: 'install'
   args:
   - 'install'
+
 - name: 'gcr.io/cloud-builders/npm'
   id: 'unit-tests'
   entrypoint: 'npm'
@@ -40,8 +42,15 @@ steps:
   - 'push'
   - 'gcr.io/$PROJECT_ID/${_IMAGE_NAME}:$SHORT_SHA'
 
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'push to artifact registry'
+  args:
+  - 'push'
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_IMAGE_NAME}:$SHORT_SHA
+
 substitutions:
   _IMAGE_NAME: devops-cloud-architecture-template-1
+  _REGION: asia-northeast1
 
 options:
   logging: CLOUD_LOGGING_ONLY
