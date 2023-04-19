@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: postgresql-config
-data:
-  postgresql-host: postgresql-service
