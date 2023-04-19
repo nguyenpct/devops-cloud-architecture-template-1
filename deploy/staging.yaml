@@ -1,0 +1,9 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: staging
+  annotations: {}
+  labels: {}
+description: staging
+gke:
+  cluster: projects/dev-pct/locations/asia-northeast1-c/clusters/devops-template-1-staging

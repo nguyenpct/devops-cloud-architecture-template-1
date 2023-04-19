@@ -1,0 +1,7 @@
+resources:
+  - './mysql/config-map.yaml'
+  - './mysql/secret.yaml'
+  - './mysql/deployment.yaml'
+  - './mysql/service.yaml'
+  - './webapp/deployment.yaml'
+  - './webapp/service.yaml'

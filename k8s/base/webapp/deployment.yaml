@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-sample
+      env: base
+  template:
+    metadata:
+      labels:
+        app: webapp-sample
+        env: base
+    spec:
+      containers:
+      - name: webapp-sample
+        image: webapp-sample
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 4000
+        env:
+          - name: VERSION
+            value: base
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: mysql_port
+          - name: DATABASE_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: mysql-config
+                key: mysql_host
+          - name: DATABASE_USER
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: mysql_user
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: mysql_password
+          - name: DATABASE_NAME
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: mysql_db
+          - name: DATABASE_URL
+            value: "mysql://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)"
