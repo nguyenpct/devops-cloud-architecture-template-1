@@ -27,6 +27,8 @@ spec:
         env:
           - name: VERSION
             value: base
+          - name: PORT
+            value: '4000'
           - name: DATABASE_HOST
             valueFrom:
               configMapKeyRef:
