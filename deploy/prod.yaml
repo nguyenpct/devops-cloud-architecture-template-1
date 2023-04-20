@@ -7,4 +7,4 @@ metadata:
 description: prod
 requireApproval: true
 gke:
-  cluster: projects/project-id-placeholder/locations/us-central1/clusters/prod
+  cluster: projects/dev-pct/locations/asia-northeast1-c/clusters/devops-template-1-production
