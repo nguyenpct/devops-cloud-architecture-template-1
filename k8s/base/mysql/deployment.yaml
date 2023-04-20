@@ -28,14 +28,14 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: mysql-user
+              key: mysql_user
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: mysql-password
+              key: mysql_password
         - name: POSTGRES_DB
           valueFrom:
             secretKeyRef:
               name: mysql-secret
-              key: mysql-db
+              key: mysql_db
