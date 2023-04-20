@@ -27,11 +27,6 @@ spec:
         env:
           - name: VERSION
             value: base
-          - name: PORT
-            valueFrom:
-              configMapKeyRef:
-                name: mysql-config
-                key: mysql_port
           - name: DATABASE_HOST
             valueFrom:
               configMapKeyRef:
