@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: webapp-deployment-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: staging
+  template:
+    metadata:
+      name: webapp-sample
+      labels:
+        env: staging
+    spec:
+      containers:
+      - name: webapp-sample
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
+        env:
+        - name: VERSION
+          value: staging

@@ -1,0 +1,35 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata: 
+  name: gke-app
+
+build:
+  artifacts:
+  - image: webapp-sample
+    context: ./
+
+deploy:
+  kustomize:
+    paths:
+    - k8s/overlays/dev
+
+profiles:
+- name: dev
+  deploy:
+    kustomize:
+      paths:
+      - './k8s/overlays/dev'
+
+- name: staging
+  deploy:
+    kustomize:
+      paths:
+      - './k8s/overlays/staging'
+
+- name: prod
+  deploy:
+    kustomize:
+      paths:
+      - './k8s/overlays/prod'
+
+# deploy:

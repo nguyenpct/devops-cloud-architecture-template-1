@@ -1,0 +1,10 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: prod
+  annotations: {}
+  labels: {}
+description: prod
+requireApproval: true
+gke:
+  cluster: projects/dev-pct/locations/asia-northeast1-a/clusters/devops-template-1-production

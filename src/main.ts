@@ -23,6 +23,19 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
+  const dbUser = app.get(ConfigService).get('DATABASE_USER');
+  const dbPass = app.get(ConfigService).get('DATABASE_PASSWORD');
+  const dbHost = app.get(ConfigService).get('DATABASE_HOST');
+  const dbPort = app.get(ConfigService).get('DATABASE_PORT');
+  const dbName = app.get(ConfigService).get('DATABASE_NAME');
+  console.log({
+    dbUser,
+    dbPass,
+    dbHost,
+    dbPort,
+    dbName,
+    databaseUrlInENV: app.get(ConfigService).get('DATABASE_URL'),
+  });
 
   const appPort = app.get(ConfigService).get('PORT');
   await app.listen(appPort);
