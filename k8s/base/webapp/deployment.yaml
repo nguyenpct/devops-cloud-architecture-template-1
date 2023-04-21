@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: webapp
+        image: asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
         imagePullPolicy: Never
         resources:
           limits:

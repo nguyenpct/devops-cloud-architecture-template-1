@@ -3,6 +3,15 @@ kind: Config
 metadata: 
   name: gke-app
 
+build:
+  artifacts:
+  - image: asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
+    docker:
+      cacheFrom:
+      - asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
+  googleCloudBuild:
+    projectId: dev-pct
+
 deploy:
   kustomize:
     paths:
