@@ -29,6 +29,16 @@ steps:
 #   args:
 #   - 'run'
 #   - 'lint'
+
+- id: Apply terraform
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      cd terraform
+      terraform init -migrate-state
+      terraform apply -auto-approve
   
 - name: 'gcr.io/k8s-skaffold/skaffold'
   entrypoint: 'sh'
@@ -60,11 +70,13 @@ steps:
                         --description "$(git log -1  --pretty='%s')" \
                         --build-artifacts /workspace/artifacts.json \
                         --annotations "commit_ui=https://source.cloud.google.com/$PROJECT_ID/${_SERVICE_NAME}/+/$COMMIT_SHA"
+
 artifacts:
   objects:
-    location: 'gs://$PROJECT_ID-gceme-artifacts/'
+    location: 'gs://${_SERVICE_NAME}-gceme-artifacts/'
     paths:
     - '/workspace/artifacts.json'
+
 options:
   # machineType: E2_HIGHCPU_8
   logging: CLOUD_LOGGING_ONLY
