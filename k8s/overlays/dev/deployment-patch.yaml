@@ -1,20 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: webapp-deployment-sample
+  name: webapp-deployment
 spec:
   selector:
     matchLabels:
       env: dev
   template:
     metadata:
-      name: webapp-sample
+      name: webapp
       labels:
         env: dev
     spec:
       containers:
-      - name: webapp-sample
-        image: webapp-sample
+      - name: webapp
+        image: webapp
         imagePullPolicy: IfNotPresent
         env:
         - name: VERSION

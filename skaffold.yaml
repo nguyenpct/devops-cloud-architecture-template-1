@@ -5,8 +5,9 @@ metadata:
 
 build:
   artifacts:
-  - image: webapp-sample
-    context: ./
+  - image: webapp
+    docker:
+      dockerfile: "./Dockerfile"
 
 deploy:
   kustomize:

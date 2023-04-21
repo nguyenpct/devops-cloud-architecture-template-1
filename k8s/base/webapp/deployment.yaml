@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment-sample
+  name: webapp-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp-sample
+      app: webapp
       env: base
   template:
     metadata:
       labels:
-        app: webapp-sample
+        app: webapp
         env: base
     spec:
       containers:
-      - name: webapp-sample
-        image: webapp-sample
-        imagePullPolicy: Always
+      - name: webapp
+        image: webapp
+        imagePullPolicy: Never
         resources:
           limits:
             memory: "512Mi"
@@ -28,7 +28,10 @@ spec:
           - name: VERSION
             value: base
           - name: PORT
-            value: '4000'
+            valueFrom:
+              configMapKeyRef:
+                name: webapp-config
+                key: webapp_port
           - name: DATABASE_HOST
             valueFrom:
               configMapKeyRef:

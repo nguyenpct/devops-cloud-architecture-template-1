@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: webapp-sample
+  name: webapp
 spec:
   ports:
   - name: http
@@ -10,4 +10,4 @@ spec:
     protocol: TCP
   type: LoadBalancer
   selector:
-    app: webapp-sample
+    app: webapp

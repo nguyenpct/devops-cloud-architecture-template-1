@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: webapp-deployment-sample
+  name: webapp-deployment
 spec:
   replicas: 2
   selector:
@@ -9,12 +9,12 @@ spec:
       env: production
   template:
     metadata:
-      name: webapp-sample
+      name: webapp
       labels:
         env: production
     spec:
       containers:
-      - name: webapp-sample
+      - name: webapp
         resources:
           limits:
             memory: "256Mi"
