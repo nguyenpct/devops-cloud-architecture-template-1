@@ -15,7 +15,7 @@ spec:
       containers:
       - name: webapp
         image: webapp
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: VERSION
           value: dev
