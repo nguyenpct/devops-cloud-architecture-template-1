@@ -3,12 +3,6 @@ kind: Config
 metadata: 
   name: gke-app
 
-build:
-  artifacts:
-  - image: webapp
-    docker:
-      dockerfile: "./Dockerfile"
-
 deploy:
   kustomize:
     paths:
