@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
-        imagePullPolicy: Always
+        image: webapp
+        imagePullPolicy: IfNotPresent
         env:
         - name: VERSION
           value: dev

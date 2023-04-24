@@ -5,12 +5,10 @@ metadata:
 
 build:
   artifacts:
-  - image: asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
+  - image: webapp
     docker:
-      cacheFrom:
-      - asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
-  googleCloudBuild:
-    projectId: dev-pct
+      dockerfile: Dockerfile
+  local: {}
 
 deploy:
   kustomize:
