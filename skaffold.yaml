@@ -7,8 +7,8 @@ build:
   artifacts:
   - image: asia-northeast1-docker.pkg.dev/dev-pct/terraform-template-repo-1/webapp
     docker:
-      dockerfile: Dockerfile
-  local: {}
+      cacheFrom:
+      - asia-northeast1-docker.pkg.dev/dev-pct/terraform-template-repo-1/webapp
 
 deploy:
   kustomize:
@@ -17,6 +17,12 @@ deploy:
 
 profiles:
 - name: dev
+  build:
+    artifacts:
+    - image: webapp
+      docker:
+        dockerfile: Dockerfile
+    local: {}
   deploy:
     kustomize:
       paths:
