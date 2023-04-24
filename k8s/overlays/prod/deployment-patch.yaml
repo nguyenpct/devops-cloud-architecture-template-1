@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: asia-northeast1-docker.pkg.dev/dev-pct/webapp-repo/webapp
+        image: asia-northeast1-docker.pkg.dev/dev-pct/terraform-template-repo-1/webapp
         imagePullPolicy: Always
         resources:
           limits:
