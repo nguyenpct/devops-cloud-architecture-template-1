@@ -37,3 +37,7 @@ lerna-debug.log*
 /db
 /elasticsearch_data
 /kibana_data
+
+# Terraform
+.terraform
+keys.json
