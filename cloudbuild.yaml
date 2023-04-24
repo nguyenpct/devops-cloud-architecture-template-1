@@ -1,8 +1,8 @@
 substitutions:
-  _SERVICE_NAME: devops-cloud-architecture-template-1
+  _SERVICE_NAME: terraform-template-repo-1
   _REGION: asia-northeast1
   _DELIVERY_PIPELINE: webapp-sample
-  _ARTIFACT_REGISTRY_REPO: webapp-repo
+  _ARTIFACT_REGISTRY_REPO: terraform-template-repo-1
 
 steps:
 # - name: 'gcr.io/cloud-builders/npm'
@@ -69,7 +69,7 @@ steps:
                         --delivery-pipeline ${_DELIVERY_PIPELINE} \
                         --description "$(git log -1  --pretty='%s')" \
                         --build-artifacts /workspace/artifacts.json \
-                        --annotations "commit_ui=https://source.cloud.google.com/$PROJECT_ID/${_SERVICE_NAME}/+/$COMMIT_SHA"
+                        --annotations "commit_ui=https://source.cloud.google.com/$PROJECT_ID/github_nguyenpct_devops-cloud-architecture-template-1/+/$COMMIT_SHA"
 
 artifacts:
   objects:

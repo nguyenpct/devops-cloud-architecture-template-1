@@ -14,7 +14,7 @@ variable "GCP_CLOUD_STORAGE_LOCATION" {
   default = "ASIA-NORTHEAST1"
 }
 
-variable "PROJECT_IDENTIFY" {
+variable "PROJECT_REPO" {
   type    = string
-  default = "devops-cloud-architecture-template-1-terraform"
+  default = "terraform-template-repo-1"
 }

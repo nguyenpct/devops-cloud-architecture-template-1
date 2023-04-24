@@ -40,3 +40,4 @@ lerna-debug.log*
 
 # Terraform
 .terraform
+keys.json
