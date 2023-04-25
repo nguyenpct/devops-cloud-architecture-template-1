@@ -3,6 +3,7 @@ substitutions:
   _REGION: asia-northeast1
   _DELIVERY_PIPELINE: webapp-sample
   _ARTIFACT_REGISTRY_REPO: terraform-template-repo-1
+  _KEEP_COUNT_IMAGES: '5'
 
 steps:
 # - name: 'gcr.io/cloud-builders/npm'
@@ -70,7 +71,15 @@ steps:
                         --description "$(git log -1  --pretty='%s')" \
                         --build-artifacts /workspace/artifacts.json \
                         --annotations "commit_ui=https://source.cloud.google.com/$PROJECT_ID/github_nguyenpct_devops-cloud-architecture-template-1/+/$COMMIT_SHA"
-
+- id: Clean up older versions
+  name: asia-docker.pkg.dev/gcr-cleaner/gcr-cleaner/gcr-cleaner-cli:latest
+  args:
+    - -repo
+    - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_ARTIFACT_REGISTRY_REPO}/webapp
+    - -keep
+    - ${_KEEP_COUNT_IMAGES}
+    - -tag-filter-any
+    - ".*"
 artifacts:
   objects:
     location: 'gs://${_SERVICE_NAME}-gceme-artifacts/'
